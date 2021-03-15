@@ -1,0 +1,75 @@
+{
+    "env": {
+        "node": true,
+        "commonjs": true,
+        "es2020": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 11
+    },
+    "plugins": [
+        "import",
+        "@typescript-eslint"
+    ],
+    "settings": {
+        "import/parsers": {
+            "@typescript-eslint/parser": [
+                ".ts"
+            ]
+        },
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true
+            }
+        }
+    },
+    "rules": {
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "comma-dangle": [
+            "error",
+            "always-multiline"
+        ],
+        "import/order": [
+            "error",
+            {
+                "newlines-between": "always",
+                "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+                "alphabetize": { "order": "desc" },
+                "pathGroups": [
+                    {
+                        "pattern": "@config",
+                        "group": "internal"
+                    },
+                    {
+                        "pattern": "@models/**",
+                        "group": "internal"
+                    },
+                    {
+                        "pattern": "@lib/**",
+                        "group": "internal"
+                    }
+                ]
+            }
+        ],
+        "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
+}
